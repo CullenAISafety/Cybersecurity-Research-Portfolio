@@ -208,6 +208,8 @@ python ai_adversarial_security/redteam_tester.py
 
 streamlit run soc_dashboard/dashboard.py
 
+
+[setup.sh(https://github.com/CullenAISafety/Cybersecurity-Research-Portfolio/blob/main/setup.sh)}
 _____________________________________________________________________________________________________________________________________________________________________________
 
 

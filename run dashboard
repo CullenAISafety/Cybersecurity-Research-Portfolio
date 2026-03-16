@@ -1,0 +1,1 @@
+streamlit run soc_dashboard/dashboard.py

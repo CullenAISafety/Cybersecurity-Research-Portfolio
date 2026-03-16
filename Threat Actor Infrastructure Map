@@ -1,0 +1,37 @@
+import pandas as pd
+import plotly.express as px
+
+data = {
+
+"ip": [
+"185.220.101.45",
+"104.21.33.12",
+"91.134.183.24"
+],
+
+"country": [
+"Russia",
+"Netherlands",
+"France"
+],
+
+"campaign": [
+"phishing",
+"c2_server",
+"data_exfil"
+]
+
+}
+
+df = pd.DataFrame(data)
+
+fig = px.scatter_geo(
+df,
+locations="country",
+locationmode="country names",
+hover_name="ip",
+color="campaign",
+title="Threat Actor Infrastructure Map"
+)
+
+fig.show()

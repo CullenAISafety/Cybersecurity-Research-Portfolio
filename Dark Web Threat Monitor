@@ -1,0 +1,17 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://example.com"
+
+response = requests.get(url)
+
+soup = BeautifulSoup(response.text, "html.parser")
+
+posts = soup.find_all("p")
+
+for post in posts:
+
+    text = post.get_text().lower()
+
+    if "ransomware" in text:
+        print("Possible ransomware post:", text)

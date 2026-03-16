@@ -1,7 +1,7 @@
 # Cybersecurity-Research-Portfolio
 SOC Lab Iranian Hackers
 
-
+_____________________________________________________________________________________________________________________________________________________________________________
 **Cybersecurity Research SOC Lab**
 
 SOC simulation platform for threat detection engineering, incident investigation, and AI adversarial testing.
@@ -151,6 +151,9 @@ suspicious activity detection
 
 log search and investigation
 
+_____________________________________________________________________________________________________________________________________________________________________________
+
+
 **Repository Structure**
 cybersecurity-research-portfolio
 
@@ -170,39 +173,44 @@ Installation
 git clone https://github.com/yourusername/cybersecurity-research-portfolio
 cd cybersecurity-research-portfolio
 
-Install dependencies:
+**Install dependencies:**
+
 
 pip install -r requirements.txt
-Running the Lab
 
-Generate SOC Logs
+
+**Running the Lab**
+
+**Generate SOC Logs**
 
 python soc_attack_simulation/attack_simulator.py
 
-Run Detection Engine
+**Run Detection Engine**
 
 python detection_engineering/detection_engine.py
 
-Run Threat Hunting
+**Run Threat Hunting**
 
 python threat_hunting/hunt_engine.py
 
-Analyze Malware Sample
+**Analyze Malware Sample**
 
 python malware_sandbox/sandbox_analyzer.py
 
-Run Dark Web Monitor
+**Run Dark Web Monitor**
 
 python darkweb_threat_monitor/darkweb_scraper.py
 
-Run AI Red Team Tests
+**Run AI Red Team Tests**
 
 python ai_adversarial_security/redteam_tester.py
 
-Launch SOC Dashboard
+**Launch SOC Dashboard**
 
 streamlit run soc_dashboard/dashboard.py
 ---
+
+_____________________________________________________________________________________________________________________________________________________________________________
 
 
 **## License**

@@ -208,7 +208,6 @@ python ai_adversarial_security/redteam_tester.py
 **Launch SOC Dashboard**
 
 streamlit run soc_dashboard/dashboard.py
----
 
 _____________________________________________________________________________________________________________________________________________________________________________
 

@@ -1,0 +1,15 @@
+import pandas as pd
+
+df = pd.read_csv("../soc_attack_simulation/soc_logs.csv")
+
+print("\nSearching for suspicious PowerShell activity\n")
+
+powershell = df[df["process"] == "powershell.exe"]
+
+print(powershell.head())
+
+print("\nSearching for attacker infrastructure\n")
+
+attacker = df[df["commandline"].str.contains("attacker", na=False)]
+
+print(attacker)

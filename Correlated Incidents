@@ -1,0 +1,5 @@
+st.subheader("Correlated Incidents")
+
+from soc_correlation_engine.alert_correlation import incidents
+
+st.write(incidents)

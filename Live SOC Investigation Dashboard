@@ -1,0 +1,41 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+st.title("SOC Investigation Dashboard")
+
+df = pd.read_csv("../soc_attack_simulation/soc_logs.csv")
+
+st.subheader("Event Log")
+
+st.write(df.head())
+
+df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+timeline = df.groupby(df["timestamp"].dt.minute).size()
+
+fig = px.line(timeline, title="Events per Minute")
+
+st.plotly_chart(fig)
+
+st.subheader("Process Distribution")
+
+process_counts = df["process"].value_counts()
+
+fig2 = px.bar(process_counts)
+
+st.plotly_chart(fig2)
+
+st.subheader("Suspicious Activity")
+
+alerts = df[df["commandline"].str.contains("Invoke-WebRequest", na=False)]
+
+st.write(alerts)
+
+query = st.text_input("Search Logs")
+
+if query:
+
+    results = df[df["commandline"].str.contains(query, case=False, na=False)]
+
+    st.write(results)

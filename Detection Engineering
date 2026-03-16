@@ -1,0 +1,30 @@
+import pandas as pd
+
+def detect_powershell_download(df):
+
+    alerts = df[df["commandline"].str.contains(
+        "Invoke-WebRequest",
+        na=False
+    )]
+
+    return alerts
+
+
+def detect_encoded_commands(df):
+
+    alerts = df[df["commandline"].str.contains(
+        "EncodedCommand",
+        na=False
+    )]
+
+    return alerts
+
+
+if __name__ == "__main__":
+
+    df = pd.read_csv("../soc_attack_simulation/soc_logs.csv")
+
+    alerts = detect_powershell_download(df)
+
+    print("Detected Alerts:")
+    print(alerts)
